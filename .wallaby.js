@@ -9,7 +9,8 @@ module.exports = function wallabyConfig() {
       'test/**/*.js'
     ],
     env: {
-      type: 'node'
+      type: 'node',
+      runner: '/usr/local/bin/node'
     },
     testFramework: 'mocha',
     bootstrap: function bootstrap(wallaby) {
