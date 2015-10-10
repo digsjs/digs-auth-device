@@ -1,20 +1,20 @@
 'use strict';
 
-describe('DefaultAdapter', function() {
-  let sandbox;
-  let DefaultAdapter = require('../lib/adapter');
+const defaultAdapterSuite = require('./suites/adapter');
+const DefaultAdapter = require('../lib/adapter');
+const _ = require('digs-common').utils;
 
-  beforeEach(function() {
-    sandbox = sinon.sandbox.create('DefaultAdapter');
-  });
 
-  afterEach(function() {
-    sandbox.restore();
-  });
+function digsMock(sandbox) {
+  const digs = require('digs-common/test/mocks/digs')(sandbox);
+  digs.types = sandbox.stub().returns(require('digs-data/lib/types'));
+  digs.model = sandbox.stub();
+  return digs;
+}
 
-  describe('initialization', function() {
-    it('should be a function', function() {
-      expect(DefaultAdapter).to.be.a('function');
-    });
-  });
-});
+describe('DefaultAdapterSuite',
+  _.partial(defaultAdapterSuite, {
+    func: DefaultAdapter,
+    digsMockFunc: digsMock
+  }));
+
