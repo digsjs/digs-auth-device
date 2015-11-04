@@ -1,1 +1,0 @@
-/Volumes/alien/projects/digsjs/digs-auth-device/node_modules/digs-dev/.wallaby.js
